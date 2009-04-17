@@ -4,9 +4,6 @@ package net.comcast.CIMCalendar
 	import flash.events.Event;
 	import flash.text.TextField;
 	
-	import net.comcast.webapis.tvplanner.HeadendFactory;
-	import net.comcast.webapis.tvplanner.events.TVPlannerEvent;
-	import net.comcast.webapis.tvplanner.models.Headend;
 	
 	
 	public class CalendarController extends Sprite
