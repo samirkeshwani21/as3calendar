@@ -97,8 +97,18 @@ package net.tbarker.Calendar
 				}
 				tempDay.isActive = false
 				tempDay.deactivate()
+				if(tempDay.activateTweenH)
+					tempDay.activateTweenH.fforward()
+				if(tempDay.activateTweenL)
+					tempDay.activateTweenL.fforward()
+				if(tempDay.activateTweenT)
+					tempDay.activateTweenT.fforward()
+				if(tempDay.activateTweenW)
+					tempDay.activateTweenW.fforward()
 				tempDay.activateTweenW = new Tween(tempDay,"width", Elastic.easeIn, tempDay.height, 50, 2);
 				tempDay.activateTweenH = new Tween(tempDay,"height", Elastic.easeIn, tempDay.height, 50, 2);
+				tempDay.activateTweenL = new Tween(tempDay,"x",Elastic.easeIn, tempDay.x, tempDay.restingX,2);
+				tempDay.activateTweenT = new Tween(tempDay,"y",Elastic.easeIn, tempDay.y, tempDay.restingY,2);
 				tempDay.activateTweenH.addEventListener(TweenEvent.MOTION_FINISH, recessDay)
 				var y:Number;
 			}
@@ -107,6 +117,10 @@ package net.tbarker.Calendar
 		
 		private function recessDay(event:TweenEvent):void
 		{
+/*			event.currentTarget.obj.x = event.currentTarget.obj.restingX
+			event.currentTarget.obj.y = event.currentTarget.obj.restingY
+			event.currentTarget.obj.width = 50
+			event.currentTarget.obj.height = 50*/
 			if(event.currentTarget.obj.isActive == false){
 				this.setChildIndex(event.currentTarget.obj,0)
 			}			
@@ -148,8 +162,8 @@ package net.tbarker.Calendar
 				tempDate = new Date(month + "/"+dayHolder+"/" + new Date().getFullYear())
 				if(tempDate.getMonth() + 1 != month){dayHolder = ""}
 				backDay = createDay(backDay, tempDate,"",dayHolder,x)
-				backDay.x = _startX
-				backDay.y = _startY
+				backDay.restingX = backDay.x = _startX
+				backDay.restingY = backDay.y = _startY
 				_startX += _dayWidth
 				addChild(backDay);
 			}
@@ -163,8 +177,8 @@ package net.tbarker.Calendar
 						tempDate = new Date(month + "/"+dayHolder+"/" + new Date().getFullYear())
 						if(tempDate.getMonth() + 1 != month){dayHolder = ""}
 						backDay = createDay(backDay, tempDate,"",dayHolder,y)
-						backDay.x = _startX
-						backDay.y = _startY
+						backDay.restingX = backDay.x = _startX
+						backDay.restingY = backDay.y = _startY
 						_startX += _dayWidth
 						addChild(backDay);
 					}
@@ -197,8 +211,8 @@ package net.tbarker.Calendar
 					{
 						//backfill previous days
 						backDay = createDay(backDay, tempDate,"","",x)
-						backDay.x = _startX
-						backDay.y = _startY
+						backDay.restingX = backDay.x = _startX
+						backDay.restingY = backDay.y = _startY
 						_startX += _dayWidth
 						addChild(backDay);
 						dayStepper++
@@ -209,8 +223,8 @@ package net.tbarker.Calendar
 				
 				if(tempDate.getMonth() + 1 == tempMonth){
 					tempDay = createDay(tempDay, tempDate, "",currentDay.toString(),tempDate.getDay())
-					tempDay.x = _startX
-					tempDay.y = _startY
+					tempDay.restingX = tempDay.x = _startX
+					tempDay.restingY = tempDay.y = _startY
 					_startX += _dayWidth
 					addChild(tempDay);
 					dayStepper++
@@ -224,8 +238,8 @@ package net.tbarker.Calendar
 					{
 						//front fill the next months days
 						backDay = createDay(backDay, tempDate,"","",x)
-						backDay.x = _startX
-						backDay.y = _startY
+						backDay.restingX = backDay.x = _startX
+						backDay.restingY = backDay.y = _startY
 						_startX += _dayWidth
 						addChild(backDay);
 					}

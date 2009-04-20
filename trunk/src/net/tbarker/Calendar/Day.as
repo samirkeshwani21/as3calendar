@@ -18,6 +18,8 @@ package net.tbarker.Calendar
 		private var _display:TextField
 		private var _stackIndex:Number
 		private var _isActive:Boolean = false;
+		private var _restingX:Number;
+		private var _restingY:Number;
 		
 		public var activateTweenH:Tween;
 		public var activateTweenW:Tween;
@@ -73,6 +75,16 @@ package net.tbarker.Calendar
 			return _dayNumber;
 		}
 		
+		public function get restingX():Number
+		{
+			return _restingX;
+		}
+		
+		public function get restingY():Number
+		{
+			return _restingY;
+		}
+		
 		public function getDate():Date
 		{
 			return _myDate;
@@ -100,6 +112,16 @@ package net.tbarker.Calendar
 		public function setDisplay(txt:String):void
 		{
 			_display.text = txt;
+		}
+		
+		public function set restingX(n:Number):void
+		{
+			 _restingX = n;
+		}
+		
+		public function set restingY(n:Number):void
+		{
+			 _restingY = n;
 		}
 		
 		public function deactivate():void
