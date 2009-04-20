@@ -117,10 +117,6 @@ package net.tbarker.Calendar
 		
 		private function recessDay(event:TweenEvent):void
 		{
-/*			event.currentTarget.obj.x = event.currentTarget.obj.restingX
-			event.currentTarget.obj.y = event.currentTarget.obj.restingY
-			event.currentTarget.obj.width = 50
-			event.currentTarget.obj.height = 50*/
 			if(event.currentTarget.obj.isActive == false){
 				this.setChildIndex(event.currentTarget.obj,0)
 			}			
