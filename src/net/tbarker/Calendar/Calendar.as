@@ -10,7 +10,7 @@ package net.tbarker.Calendar
 	
 	
 	
-	public class AbstractCalendar extends Sprite implements ICalendar 
+	public class Calendar extends Sprite implements ICalendar 
 	{
 		private var _currDate:Date;
 		private var _currMonth:Number;
@@ -33,7 +33,7 @@ package net.tbarker.Calendar
   		private var _yTween:Tween;
         
         
-		public function AbstractCalendar(month:Number=0)
+		public function Calendar(month:Number=0)
 		{
 			_currDate = new Date();
 			_currMonth = month
