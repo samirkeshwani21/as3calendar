@@ -1,0 +1,1 @@
+Calendar class in AS3, a collection of days, can render in day, week or month modes.  Animates open and each day animates on click.
